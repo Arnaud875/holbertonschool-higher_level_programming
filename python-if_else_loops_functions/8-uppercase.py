@@ -1,4 +1,7 @@
 #!/usr/bin/python3
 def uppercase(s):
-    result = ''.join([chr(ord(c) - 32) if 'a' <= c <= 'z' else c for c in s])
-    print(result)
+    for c in s:
+        if 'a' <= c <= 'z':
+            c = chr(ord(c) - 32)
+        print(c, end="")
+    print("")

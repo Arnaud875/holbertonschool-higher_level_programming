@@ -8,4 +8,4 @@ if __name__ == "__main__":
                                      if args > 0 else "."))
 
     for i in range(args):
-        print("{:d}: {:s}".format(i + 1, argv[i + 1]))
+        print("{:d}: {}".format(i + 1, argv[i + 1]))

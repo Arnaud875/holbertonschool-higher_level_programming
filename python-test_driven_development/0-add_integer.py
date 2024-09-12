@@ -1,11 +1,14 @@
 #!/usr/bin/python3
 def add_integer(a, b=98):
     """
-    Adds two numbers and returns their sum. If either of the inputs is a float, it is cast to an integer before addition.
+    Adds two numbers and returns their sum.
+    If either of the inputs is a float,
+    it is cast to an integer before addition.
 
     Args:
         a (int, float): The first number to be added.
-        b (int, float, optional): The second number to be added, defaults to 98.
+        b (int, float, optional): The second number
+        to be added, defaults to 98.
 
     Returns:
         int: The sum of the two numbers as an integer.

@@ -1,4 +1,11 @@
 #!/usr/bin/python3
+"""
+Defining a function for adding numbers
+
+Functions:
+    add_integer(a, b=98): Return the addication of a and b.
+"""
+
 def add_integer(a, b=98):
     """
     Adds two numbers and returns their sum.
@@ -21,4 +28,4 @@ def add_integer(a, b=98):
     elif not isinstance(b, (int, float)):
         raise TypeError("b must be an integer")
 
-    return a + b
+    return int(a) + int(b)

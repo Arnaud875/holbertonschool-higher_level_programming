@@ -3,6 +3,14 @@
 3
 >>> add_integer(100)
 198
+>>> add_integer(200, 2)
+202
+>>> add_integer(100, 50)
+150
+>>> add_integer(400, 2)
+402
+>>> add_integer(300, 2)
+302
 >>> add_integer(100.5, 2)
 102
 >>> add_integer("2", 2)

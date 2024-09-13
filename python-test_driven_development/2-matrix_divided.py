@@ -35,6 +35,10 @@ def matrix_divided(matrix, div):
         list of list of float: A new matrix with the
         result of the division, rounded to 2 decimal places.
     """
+
+    if div == 0:
+        raise TypeError("division by zero")
+
     if not isinstance(matrix, list):
         raise TypeError("matrix must be a matrix \
                         (list of lists) of integers/floats")
@@ -54,8 +58,5 @@ def matrix_divided(matrix, div):
 
     if not isinstance(div, (int, float)):
         raise TypeError("div must be a number")
-
-    if div == 0:
-        raise TypeError("division by zero")
 
     return [[round(element / div, 2) for element in row] for row in matrix]

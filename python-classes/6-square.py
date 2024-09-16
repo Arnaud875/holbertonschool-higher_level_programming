@@ -17,10 +17,16 @@ class Square:
 
     @property
     def position(self):
+        """
+        Get position of square
+        """
         return self.__position
 
     @position.setter
     def position(self, value):
+        """
+        Set square position
+        """
         if not isinstance(value, tuple) or len(value) != 2:
             raise TypeError("position must be a tuple of 2 positive")
 

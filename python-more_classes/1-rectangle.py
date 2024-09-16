@@ -6,10 +6,13 @@ Rectange class
 
 class Rectangle:
     """
-    Rectangle constructor to initialize width and heigth
-    private attributs
+    Rectangle class
     """
     def __init__(self, width=0, height=0):
+        """
+        Rectangle constructor to initialize width and heigth
+        private attributs
+        """
         self.__height = height
         self.__width = width
 

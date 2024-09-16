@@ -10,14 +10,8 @@ class Square:
     """
     def __init__(self, size=0, position=(0, 0)):
         """
-        Square class constructor with size private attribut
+        Square class constructor with size,position private attribut
         """
-        if not isinstance(size, int):
-            raise TypeError("size must be an integer")
-
-        if size <= 0:
-            raise TypeError("size must be >= 0")
-
         self.__size = size
         self.__position = position
 
@@ -27,8 +21,14 @@ class Square:
 
     @position.setter
     def position(self, value):
-        if value[0] < 0 or value[1] < 0:
+        if not isinstance(value, tuple) or len(value) < 2:
             raise TypeError("position must be a tuple of 2 positive ")
+
+        if not all(isinstance(v, int) for v in value):
+            raise TypeError("position must be a tuple of 2 positive")
+
+        if value[0] < 0 or value[1] < 0:
+            raise TypeError("position must be a tuple of 2 positive")
 
         self.__position = value
 

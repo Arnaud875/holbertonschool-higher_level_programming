@@ -1,16 +1,30 @@
 #!/usr/bin/python3
+"""
+Rectange class
+"""
+
 
 class Rectangle:
+    """
+    Rectangle constructor to initialize width and heigth
+    private attributs
+    """
     def __init__(self, width=0, height=0):
-        self.__width = width
         self.__height = height
+        self.__width = width
 
     @property
     def width(self):
+        """
+        Get width private attribut
+        """
         return self.__width
 
     @width.setter
     def width(self, value):
+        """
+        Set width private attribut
+        """
         if not isinstance(value, int):
             raise TypeError("width must be an integer")
 
@@ -21,10 +35,16 @@ class Rectangle:
 
     @property
     def height(self):
+        """
+        Get height private attribut
+        """
         return self.__height
 
     @height.setter
     def height(self, value):
+        """
+        Set height private attribut
+        """
         if not isinstance(value, int):
             raise TypeError("height must be an integer")
 

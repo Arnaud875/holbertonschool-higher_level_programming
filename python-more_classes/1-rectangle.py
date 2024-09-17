@@ -7,6 +7,10 @@ Rectangle class representing a rectangle shape.
 class Rectangle:
     """
     Represents a rectangle.
+
+    Args:
+        width (int): Width of the rectangle.
+        height (int): Height of the rectangle.
     """
     def __init__(self, width=0, height=0):
         """

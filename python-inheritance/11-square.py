@@ -1,13 +1,14 @@
 #!/usr/bin/python3
-"""This file defines a Square class that inherits
-from the Rectangle class in the 9-rectangle module."""
+"""
+Module contains Square class
+"""
 
 
 class Square(__import__("9-rectangle").Rectangle):
     """Initialize the size of the square and validate it as an integer"""
     def __init__(self, size):
-        super().__init__(size, size)
         self.integer_validator("size", size)
+        super().__init__(size, size)
 
         self.__size = size
 

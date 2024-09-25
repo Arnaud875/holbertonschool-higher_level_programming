@@ -13,8 +13,12 @@ class CountedIterator:
         self.__count = 0
 
     def __next__(self):
-        self.__count += 1
-        return next(self.iterator)
+        try:
+            value = next(self.iterator)
+            self.__count += 1
+            return value
+        except StopIteration:
+            raise StopIteration
 
     def get_count(self):
         return self.__count

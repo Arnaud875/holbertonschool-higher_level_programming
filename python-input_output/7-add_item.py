@@ -13,9 +13,9 @@ if __name__ == "__main__":
     data = []
 
     try:
-        data = load_from_json_file("add_items.json")
+        data = load_from_json_file("add_item.json")
     except Exception as e:
         pass
 
     data.extend(argv[1:])
-    save_to_json_file(data, "add_items.json")
+    save_to_json_file(data, "add_item.json")

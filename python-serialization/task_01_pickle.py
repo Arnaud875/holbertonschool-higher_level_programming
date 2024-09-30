@@ -29,13 +29,19 @@ class CustomObject:
         """
         Serialize object
         """
-        with open(filename, "wb") as f:
-            dump(self, f)
+        try:
+            with open(filename, "wb") as f:
+                dump(self, f)
+        except Exception as e:
+            return None
 
     @classmethod
     def deserialize(cls, filename):
         """
         Deserialize object from file
         """
-        with open(filename, "rb") as f:
-            return load(f)
+        try:
+            with open(filename, "rb") as f:
+                return load(f)
+        except Exception as e:
+            return None

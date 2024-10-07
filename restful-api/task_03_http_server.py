@@ -16,22 +16,24 @@ class HTTPHandler(BaseHTTPRequestHandler):
         """
         if self.path == "/":
             self.send_response(200)
+            self.send_header("Content-Type", "text/plain")
             self.end_headers()
             self.send_message("Hello, this is a simple API!")
         elif self.path == "/data":
             self.send_response(200)
-            self.send_header("Content-type", "application/json")
+            self.send_header("Content-Type", "application/json")
             self.end_headers()
 
             data = json.dumps({"name": "John", "age": 30, "city": "New York"})
             self.send_message(data)
         elif self.path == "/status":
             self.send_response(200)
+            self.send_header("Content-Type", "text/plain")
             self.end_headers()
             self.send_message("OK")
         elif self.path == "/info":
             self.send_response(200)
-            self.send_header("Content-type", "application/json")
+            self.send_header("Content-Type", "application/json")
             self.end_headers()
 
             data = json.dumps(

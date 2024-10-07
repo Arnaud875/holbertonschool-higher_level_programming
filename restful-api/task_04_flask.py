@@ -41,7 +41,7 @@ def get_user(username):
     Get user endpoint to find user data with username
     """
     user = find_user(username)
-    return jsonify(user if user else {"error": "User not found"})
+    return jsonify(user if user else {"error": "User not found"}), 400
 
 
 @app.route("/add_user", methods=["POST"])

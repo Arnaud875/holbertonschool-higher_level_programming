@@ -41,7 +41,10 @@ def get_user(username):
     Get user endpoint to find user data with username
     """
     user = find_user(username)
-    return jsonify(user if user else {"error": "User not found"}), 404
+    if user:
+        return jsonify(user), 200
+    else:
+        return jsonify({"error": "User not found"}), 404
 
 
 @app.route("/add_user", methods=["POST"])
@@ -49,6 +52,10 @@ def add_user():
     """
     Add user endpoint to add user data
     """
+
+    if not request.json.get("username"):
+        return jsonify({ "error": "Username is required" }), 400
+
     if not find_user(request.json["username"]):
         USERS_DATA.append(request.json)
 

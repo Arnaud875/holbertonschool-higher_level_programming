@@ -42,8 +42,8 @@ def user_login():
 
     if not payload["username"] in users:
         users[payload["username"]] = payload
-        return jsonify(access_token=access_token), 201
-    return jsonify(access_token=access_token), 200
+    return jsonify(access_token=access_token), 201
+    #return jsonify(access_token=access_token), 200
 
 
 @app.route("/basic-protected")

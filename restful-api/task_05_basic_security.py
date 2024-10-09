@@ -38,11 +38,12 @@ def user_login():
     payload["password"] = generate_password_hash(payload["password"])
     payload["role"] = "user"
 
+    access_token = create_access_token(identity=payload["username"])
+
     if not payload["username"] in users:
         users[payload["username"]] = payload
-
-    access_token = create_access_token(identity=payload["username"])
-    return jsonify(access_token=access_token)
+        return jsonify(access_token=access_token), 201
+    return jsonify(access_token=access_token), 200
 
 
 @app.route("/basic-protected")

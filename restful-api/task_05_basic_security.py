@@ -45,19 +45,18 @@ def user_login():
     """
     Create a new user and return jwt access token
     """
-    payload = request.json
-    payload["password"] = generate_password_hash(payload["password"])
-    payload["role"] = "user"
+    username = request.json["username"]
+    password = request.json["password"]
 
-    user = users.get(payload["username"])
+    user = users.get(username)
 
     if not user:
         return jsonify({"error": "Invalid credentials"}), 401
 
-    if not check_password_hash(user["password"], payload["password"]):
+    if not check_password_hash(user["password"], password):
         return jsonify({"error": "Invalid credentials"}), 401
 
-    access_token = create_access_token(identity=payload["username"])
+    access_token = create_access_token(identity={"username": username, "role": user["role"]})
     return jsonify(access_token=access_token), 200
 
 
@@ -85,7 +84,7 @@ def admin_only():
     """
     Check if user is a Admin
     """
-    if users[get_jwt_identity()]["role"] != "admin":
+    if get_jwt_identity()["role"] != "admin":
         return "403 Forbidden", 403
     return jsonify({"Admin Access": "Granted"}), 200
 

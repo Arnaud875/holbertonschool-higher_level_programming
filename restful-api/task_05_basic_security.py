@@ -15,7 +15,18 @@ app.config["JWT_SECRET_KEY"] = "I_am_god"
 jwt = JWTManager(app)
 auth = HTTPBasicAuth()
 
-users = {}
+users = {
+    "user1": {
+        "username": "user1",
+        "password": "<hashed_password>",
+        "role": "user"
+    },
+    "admin1": {
+        "username": "admin1",
+        "password": "<hashed_password>",
+        "role": "admin"
+    }
+}
 
 
 @auth.verify_password
@@ -38,12 +49,16 @@ def user_login():
     payload["password"] = generate_password_hash(payload["password"])
     payload["role"] = "user"
 
-    access_token = create_access_token(identity=payload["username"])
+    user = users.get(payload["username"])
 
-    if not payload["username"] in users:
-        users[payload["username"]] = payload
-    return jsonify(access_token=access_token), 201
-    #return jsonify(access_token=access_token), 200
+    if not user:
+        return jsonify({"error": "Invalid credentials"}), 401
+
+    if not check_password_hash(user["password"], payload["password"]):
+        return jsonify({"error": "Invalid credentials"}), 401
+
+    access_token = create_access_token(identity=payload["username"])
+    return jsonify(access_token=access_token), 200
 
 
 @app.route("/basic-protected")
@@ -52,7 +67,7 @@ def basic_protected():
     """
     Check if user exist with BasicAuth
     """
-    return jsonify({"Basic Auth": "Access Granted"})
+    return jsonify({"Basic Auth": "Access Granted"}), 200
 
 
 @app.route("/jwt-protected")
@@ -61,7 +76,7 @@ def jwt_protected():
     """
     Check if is a valid jwt token
     """
-    return jsonify({"JWT Auth": "Access Granted"})
+    return jsonify({"JWT Auth": "Access Granted"}), 200
 
 
 @app.route("/admin-only")
@@ -72,7 +87,7 @@ def admin_only():
     """
     if users[get_jwt_identity()]["role"] != "admin":
         return "403 Forbidden", 403
-    return jsonify({"Admin Access": "Granted"})
+    return jsonify({"Admin Access": "Granted"}), 200
 
 
 @jwt.unauthorized_loader

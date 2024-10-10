@@ -68,7 +68,7 @@ def basic_protected():
     """
     Check if user exist with BasicAuth
     """
-    return jsonify({"Basic Auth": "Access Granted"}), 200
+    return "Basic Auth: Access Granted", 200
 
 
 @app.route("/jwt-protected")
@@ -77,7 +77,7 @@ def jwt_protected():
     """
     Check if is a valid jwt token
     """
-    return jsonify({"JWT Auth": "Access Granted"}), 200
+    return "JWT Auth: Access Granted", 200
 
 
 @app.route("/admin-only")
@@ -88,7 +88,7 @@ def admin_only():
     """
     if get_jwt_identity()["role"] != "admin":
         return "403 Forbidden", 403
-    return jsonify({"Admin Access": "Granted"}), 200
+    return "Admin Access: Granted", 200
 
 
 @jwt.unauthorized_loader

@@ -88,7 +88,7 @@ def admin_only():
     Check if user is a Admin
     """
     if get_jwt_identity()["role"] != "admin":
-        return "403 Forbidden", 403
+        return {"error": "Admin access required"}, 403
     return "Admin Access: Granted", 200
 
 

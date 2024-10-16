@@ -10,6 +10,7 @@ from werkzeug.security import generate_password_hash, check_password_hash
 
 
 app = Flask(__name__)
+app.config["SECRET_KEY"] = "I_am_god"
 app.config["JWT_SECRET_KEY"] = "I_am_god"
 
 jwt = JWTManager(app)
@@ -18,12 +19,12 @@ auth = HTTPBasicAuth()
 users = {
     "user1": {
         "username": "user1",
-        "password": generate_password_hash("<hashed_password>"),
+        "password": generate_password_hash("password"),
         "role": "user"
     },
     "admin1": {
         "username": "admin1",
-        "password": generate_password_hash("<hashed_password>"),
+        "password": generate_password_hash("password"),
         "role": "admin"
     }
 }

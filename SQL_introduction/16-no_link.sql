@@ -1,6 +1,6 @@
 -- 16. lists all records of the table
 
-select score, name
-from second_table
-where name != ""
-order by score desc;
+SELECT score, name
+FROM second_table
+WHERE name != ""
+ORDER BY score DESC;

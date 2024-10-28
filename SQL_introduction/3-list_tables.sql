@@ -1,2 +1,2 @@
--- 3 Show tables of mysql database
+-- 3. Show tables of mysql database
 SHOW TABLES;

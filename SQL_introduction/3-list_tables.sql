@@ -1,2 +1,2 @@
 -- 3 Show tables of mysql database
-SHOW TABLES FROM mysql;
+SHOW TABLES;

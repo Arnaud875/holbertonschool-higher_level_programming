@@ -1,2 +1,2 @@
--- 8 View all rows with id 89
+-- 8. View all rows with id 89
 SELECT COUNT(*) from first_table WHERE id = 89;

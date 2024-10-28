@@ -1,4 +1,4 @@
 -- 14. Score average of all records
 
-SELECT avg(score)
+SELECT AVG(score)
 FROM second_table;

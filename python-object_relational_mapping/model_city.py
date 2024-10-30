@@ -9,6 +9,8 @@ from model_state import Base
 
 
 class City(Base):
+    """City object model"""
+
     __tablename__ = "cities"
     id = Column(Integer, primary_key=True, autoincrement=True, nullable=False)
     state_id = Column(Integer, ForeignKey('states.id'), nullable=False)

@@ -16,11 +16,11 @@ if __name__ == "__main__":
     )
 
     cursor = db.cursor()
-    cursor.execute("SELECT * FROM states ORDER BY states.id ASC;")
+    cursor.execute("SELECT * FROM states WHERE BINARY name = '{}' \
+        ORDER BY states.id ASC;".format(sys.argv[4]))
 
     for state in cursor.fetchall():
-        if str(state[1]) == sys.argv[4]:
-            print(state)
+        print("{}".format(state))
 
     cursor.close()
     db.close()

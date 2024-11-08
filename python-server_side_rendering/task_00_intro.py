@@ -50,4 +50,4 @@ def generate_invitations(template, attendees):
             with open(output_file_name, 'w') as file:
                 file.write(personalized_invitation)
         except Exception as e:
-            continue
+            print(f"Error {output_file_name}: {e}")

@@ -11,16 +11,25 @@ app = Flask(__name__)
 
 @app.route('/')
 def home():
+    """
+    View index.html template
+    """
     return render_template('index.html')
 
 
 @app.route('/about')
 def about():
+    """
+    View about.html template
+    """
     return render_template('about.html')
 
 
 @app.route('/contact')
 def contact():
+    """
+    View contact.html template
+    """
     return render_template('contact.html')
 
 

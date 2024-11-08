@@ -7,6 +7,9 @@ from os import path
 
 
 def generate_invitations(template, attendees):
+    """
+    Create invitation from template
+    """
     if not isinstance(template, str):
         raise TypeError("Invalid template type")
 
